@@ -1,0 +1,33 @@
+.Card
+{
+    background-color: whitesmoke;
+    border-right: solid rgba(0, 0, 0, 0.525) 2px;
+    border-bottom: solid rgba(0, 0, 0, 0.525) 2px;
+    width: 160px;
+    height: 200px;
+}
+
+.CardTop
+{
+    color: white;
+    background-color: rgb(20, 120, 252);
+}
+
+.CardText
+{
+    padding-left: 10px;
+}
+
+.CardBottom
+{
+    
+}
+
+.BottomText
+{
+    background-color: white;
+    border: solid rgba(0, 0, 0, 0.125) 2px;
+    height: 22px;
+    width: 90%;
+    font-size: small;
+}
