@@ -5,29 +5,46 @@
     border-bottom: solid rgba(0, 0, 0, 0.525) 2px;
     width: 160px;
     height: 200px;
+    border-radius: 5px;
 }
 
 .CardTop
 {
     color: white;
     background-color: rgb(20, 120, 252);
+    vertical-align: top;
 }
 
 .CardText
 {
     padding-left: 10px;
+    font-size: x-large;
 }
 
 .CardBottom
 {
-    
+    max-height: 90px;
+    right: 2px;
 }
 
 .BottomText
 {
     background-color: white;
     border: solid rgba(0, 0, 0, 0.125) 2px;
-    height: 22px;
+    height: 20px;
     width: 90%;
     font-size: small;
+
+}
+
+#CardHolder
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: space;
+    min-height: 300px;
+    max-width: 80%;
+    padding-left: 10%;
+    padding-right: 10%;
 }
