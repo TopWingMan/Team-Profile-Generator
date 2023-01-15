@@ -1,6 +1,9 @@
 const inquirer = require("inquirer");
 const fs = require('fs');
+const { Console } = require("console");
+const document = "./new.html";
 
+//#region Questions
 const managerQuestions =
 [
     {
@@ -22,6 +25,16 @@ const managerQuestions =
         type:"input",
         message:"What is your team managers office number?",
         name:"managerOfficeNumber"
+    }
+]
+
+const addEmployesQuestion =
+[
+    {
+        type:"list",
+        name:"addEmployee",
+        message:"Add another employee to roster?",
+        choices: ['Engineer', 'Intern', 'No more']
     }
 ]
 
@@ -69,18 +82,20 @@ const internQuestions =
     {
         type:"input",
         message:"What school does your intern go to?",
-        name:"internGithub"
+        name:"internSchool"
     }
 ]
+//#endregion
 
 inquirer
     .prompt(managerQuestions)
     .then((data) =>
     {
-        writeToFile();
+        writeToFile(data);
+        AskAddEmployee();
     })
 
-function writeToFile()
+function writeToFile(data)
 {
     fs.writeFile
         ('new.html',
@@ -103,15 +118,19 @@ function writeToFile()
                     <div style="padding: 10px;">
                         <div class="Card">
                             <div class="CardTop">
-                                <p class="CardText">Jared <br> $ Title</p>
+                                <p class="CardText">${data.managerName} <br> $ Manager</p>
                             </div>
                     
                             <div class="CardBottom">
-                                <p class="BottomText">ID: 1</p>
-                                <p class="BottomText">Email: ford@gmail.com</p>
-                                <p class="BottomText">Office number: 1</p>
+                                <p class="BottomText">ID: ${data.managerID}</p>
+                                <p class="BottomText">Email: ${data.managerEmail}</p>
+                                <p class="BottomText">Office number: ${data.managerOfficeNumber}</p>
                             </div>
                         </div>
+                    </div>
+
+                    <div id="AddCardHere">
+
                     </div>
             
                 </div>
@@ -126,4 +145,78 @@ function writeToFile()
                 console.log('CreatedFile!');
             }
         );
+}
+
+function AskAddEmployee()
+{
+    inquirer
+    .prompt(addEmployesQuestion)
+    .then((data) =>
+    {
+        if (data.addEmployee === 'Engineer') {AskAddEngineer();}
+        else if (data.addEmployee === 'Intern') {AskAddIntern();}
+        else {console.log("Created file with employees")}
+    })
+}
+
+function AskAddEngineer()
+{
+    inquirer
+    .prompt(engineerQuestions)
+    .then((data) =>
+    {
+        //Append data to a card to html file
+        fs.appendFile('./new.html',
+        `<div style="padding: 10px;">
+            <div class="Card">
+                <div class="CardTop">
+                    <p class="CardText">${data.engineerName} <br> $ Engineer</p>
+                </div>
+    
+                <div class="CardBottom">
+                    <p class="BottomText">ID: ${data.engineerID}</p>
+                    <p class="BottomText">Email: ${data.engineerEmail}</p>
+                    <p class="BottomText">Github: ${data.engineerGithub}</p>
+                </div>
+            </div>
+        </div>`, 
+         function (err) 
+        {
+            if (err) throw err;
+            console.log('AppendedEngineer!');
+        });
+        
+        AskAddEmployee();
+    })
+}
+
+function AskAddIntern()
+{
+    inquirer
+    .prompt(internQuestions)
+    .then((data) =>
+    {
+        //Append data to a card to html file
+        fs.appendFile('./new.html',
+        `<div style="padding: 10px;">
+            <div class="Card">
+                <div class="CardTop">
+                    <p class="CardText">${data.internName} <br> $ Intern</p>
+                </div>
+    
+                <div class="CardBottom">
+                    <p class="BottomText">ID: ${data.internID}</p>
+                    <p class="BottomText">Email: ${data.internEmail}</p>
+                    <p class="BottomText">School: ${data.internSchool}</p>
+                </div>
+            </div>
+        </div>`, 
+         function (err) 
+        {
+            if (err) throw err;
+            console.log('AppendedIntern!');
+        });
+        
+        AskAddEmployee();
+    })
 }
