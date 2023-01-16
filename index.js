@@ -123,7 +123,7 @@ function writeToFile(data)
                     
                             <div class="CardBottom">
                                 <p class="BottomText">ID: ${data.managerID}</p>
-                                <p class="BottomText">Email: ${data.managerEmail}</p>
+                                <p class="BottomText">Email: <a href="mailto:${data.managerEmail}?subject=Subject&body=message%20goes%20here">${data.managerEmail}</a></p>
                                 <p class="BottomText">Office number: ${data.managerOfficeNumber}</p>
                             </div>
                         </div>
@@ -186,8 +186,8 @@ function AskAddEngineer()
     
                                 <div class="CardBottom">
                                     <p class="BottomText">ID: ${data.engineerID}</p>
-                                    <p class="BottomText">Email: ${data.engineerEmail}</p>
-                                    <p class="BottomText">Github: ${data.engineerGithub}</p>
+                                    <p class="BottomText">Email: <a href="mailto:${data.engineerEmail}?subject=Subject&body=message%20goes%20here">${data.engineerEmail}</a></p>
+                                    <p class="BottomText">Github: <a href="https://github.com/${data.engineerGithub}" target="_blank">${data.engineerGithub}</a></p>
                                 </div>
                             </div>
                         </div>`, 
@@ -219,7 +219,7 @@ function AskAddIntern()
     
                                 <div class="CardBottom">
                                     <p class="BottomText">ID: ${data.internID}</p>
-                                    <p class="BottomText">Email: ${data.internEmail}</p>
+                                    <p class="BottomText">Email: <a href="mailto:${data.internEmail}?subject=Subject&body=message%20goes%20here">${data.internEmail}</a></p>
                                     <p class="BottomText">School: ${data.internSchool}</p>
                                 </div>
                             </div>  
