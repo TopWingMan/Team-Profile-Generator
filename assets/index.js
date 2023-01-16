@@ -86,13 +86,16 @@ const internQuestions =
 //#endregion
 
 //Ask user questions about team manager
-inquirer
+function AskManagerQuestions()
+{
+    inquirer
     .prompt(managerQuestions)
     .then((data) =>
     {
         writeToFile(data);
         AskAddEmployee();
     })
+}
 
 //Write manager data to file
 function writeToFile(data)
@@ -236,3 +239,6 @@ function AskAddIntern()
         AskAddEmployee();
     })
 }
+
+//starts the script
+AskManagerQuestions();
