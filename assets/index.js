@@ -1,9 +1,7 @@
 const inquirer = require("inquirer");
 const fs = require('fs');
-const { Console } = require("console");
-const document = "./new.html";
 
-//#region Questions
+//#region Questions we ask user
 const managerQuestions =
 [
     {
@@ -87,6 +85,7 @@ const internQuestions =
 ]
 //#endregion
 
+//Ask user questions about team manager
 inquirer
     .prompt(managerQuestions)
     .then((data) =>
@@ -95,6 +94,7 @@ inquirer
         AskAddEmployee();
     })
 
+//Write manager data to file
 function writeToFile(data)
 {
     fs.writeFile
@@ -118,7 +118,7 @@ function writeToFile(data)
                     <div style="padding: 10px;">
                         <div class="Card">
                             <div class="CardTop">
-                                <p class="CardText">${data.managerName} <br> $ Manager</p>
+                                <p class="CardText">${data.managerName} <br> ☕ Manager</p>
                             </div>
                     
                             <div class="CardBottom">
@@ -138,6 +138,7 @@ function writeToFile(data)
         );
 }
 
+//ask user if they want to add more employees to site and what kind
 function AskAddEmployee()
 {
     inquirer
@@ -168,6 +169,7 @@ function AskAddEmployee()
     })
 }
 
+//ask user questions about thier engineer
 function AskAddEngineer()
 {
     inquirer
@@ -181,7 +183,7 @@ function AskAddEngineer()
                         <div style="padding: 10px;">
                             <div class="Card">
                                 <div class="CardTop">
-                                    <p class="CardText">${data.engineerName} <br> $ Engineer</p>
+                                    <p class="CardText">${data.engineerName} <br> 👓 Engineer</p>
                                 </div>
     
                                 <div class="CardBottom">
@@ -201,6 +203,7 @@ function AskAddEngineer()
     })
 }
 
+//ask user questions about thier intern
 function AskAddIntern()
 {
     inquirer
@@ -214,7 +217,7 @@ function AskAddIntern()
                         <div style="padding: 10px;">
                             <div class="Card">
                                 <div class="CardTop">
-                                    <p class="CardText">${data.internName} <br> $ Intern</p>
+                                    <p class="CardText">${data.internName} <br> 🎓 Intern</p>
                                 </div>
     
                                 <div class="CardBottom">
