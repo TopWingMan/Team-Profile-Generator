@@ -80,3 +80,7 @@ class Intern extends Employee
         return this.school;
     }
 }
+
+var newEmployee = new Manager('zach', 1, 'ZacharyStanaford@gmail.com', 1);
+
+console.log(newEmployee.name);
