@@ -1,10 +1,10 @@
 class Employee
 {
-    constructor()
+    constructor(name, id, email)
     {
-        this.name;
-        this.id;
-        this.email; 
+        this.name = name;
+        this.id = id;
+        this.email = email; 
     }
 
     GetName()
@@ -24,24 +24,36 @@ class Employee
 
     GetRole()
     {
-        return this.role;
+        return 'Employee';
     }
 
 }
 
 class Manager extends Employee
 {
-    constructor()
+    constructor(name, id, email, officeNumber)
     {
-        this.officeNumber;
+        super(name, id, email);
+        this.officeNumber = officeNumber;
+    }
+
+    GetRole()
+    {
+        return 'Manager';
     }
 }
 
 class Engineer extends Employee
 {
-    constructor()
+    constructor(name, id, email, gitHub)
     {
-        this.gitHub;
+        super(name, id, email);
+        this.gitHub = gitHub;
+    }
+
+    GetRole()
+    {
+        return 'Engineer';
     }
 
     GetGitHub()
@@ -52,9 +64,15 @@ class Engineer extends Employee
 
 class Intern extends Employee
 {
-    constructor()
+    constructor(name, id, email, school)
     {
-        this.school;
+        super(name, id, email);
+        this.school = school;
+    }
+
+    GetRole()
+    {
+        return 'Intern';
     }
 
     GetSchool()
@@ -62,6 +80,3 @@ class Intern extends Employee
         return this.school;
     }
 }
-
-var me = new Engineer()
-console.log(me.GetGitHub());
