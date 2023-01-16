@@ -128,16 +128,7 @@ function writeToFile(data)
                             </div>
                         </div>
                     </div>
-
-                    <div id="AddCardHere">
-
-                    </div>
-            
-                </div>
-            
-                </body>
-            </body>
-            </html>`
+`
 
             , function (err) 
             {
@@ -155,7 +146,25 @@ function AskAddEmployee()
     {
         if (data.addEmployee === 'Engineer') {AskAddEngineer();}
         else if (data.addEmployee === 'Intern') {AskAddIntern();}
-        else {console.log("Created file with employees")}
+        else 
+        {
+            fs.appendFile('./new.html',
+            `
+                    
+            
+                        </div>
+            
+                        </body>
+                    </body>
+                    </html>`
+            , 
+            function (err) 
+            {
+                if (err) throw err;
+                console.log('AppendedEngineer!');
+            });
+            console.log("Created file with employees")
+        }
     })
 }
 
@@ -167,19 +176,21 @@ function AskAddEngineer()
     {
         //Append data to a card to html file
         fs.appendFile('./new.html',
-        `<div style="padding: 10px;">
-            <div class="Card">
-                <div class="CardTop">
-                    <p class="CardText">${data.engineerName} <br> $ Engineer</p>
-                </div>
+        `
+        
+                        <div style="padding: 10px;">
+                            <div class="Card">
+                                <div class="CardTop">
+                                    <p class="CardText">${data.engineerName} <br> $ Engineer</p>
+                                </div>
     
-                <div class="CardBottom">
-                    <p class="BottomText">ID: ${data.engineerID}</p>
-                    <p class="BottomText">Email: ${data.engineerEmail}</p>
-                    <p class="BottomText">Github: ${data.engineerGithub}</p>
-                </div>
-            </div>
-        </div>`, 
+                                <div class="CardBottom">
+                                    <p class="BottomText">ID: ${data.engineerID}</p>
+                                    <p class="BottomText">Email: ${data.engineerEmail}</p>
+                                    <p class="BottomText">Github: ${data.engineerGithub}</p>
+                                </div>
+                            </div>
+                        </div>`, 
          function (err) 
         {
             if (err) throw err;
@@ -198,19 +209,21 @@ function AskAddIntern()
     {
         //Append data to a card to html file
         fs.appendFile('./new.html',
-        `<div style="padding: 10px;">
-            <div class="Card">
-                <div class="CardTop">
-                    <p class="CardText">${data.internName} <br> $ Intern</p>
-                </div>
+        `
+        
+                        <div style="padding: 10px;">
+                            <div class="Card">
+                                <div class="CardTop">
+                                    <p class="CardText">${data.internName} <br> $ Intern</p>
+                                </div>
     
-                <div class="CardBottom">
-                    <p class="BottomText">ID: ${data.internID}</p>
-                    <p class="BottomText">Email: ${data.internEmail}</p>
-                    <p class="BottomText">School: ${data.internSchool}</p>
-                </div>
-            </div>
-        </div>`, 
+                                <div class="CardBottom">
+                                    <p class="BottomText">ID: ${data.internID}</p>
+                                    <p class="BottomText">Email: ${data.internEmail}</p>
+                                    <p class="BottomText">School: ${data.internSchool}</p>
+                                </div>
+                            </div>  
+                        </div>`, 
          function (err) 
         {
             if (err) throw err;
